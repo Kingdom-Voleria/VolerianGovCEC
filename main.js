@@ -10,10 +10,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function getCurrentUser() {
-        const res = await fetch('http://localhost:3000/api/me', { credentials: 'include' });
-        if (res.ok) {
-            const data = await res.json();
-            return data.user || null;
+        try {
+            const res = await fetch('http://localhost:3000/api/me', { credentials: 'include' });
+            if (res.ok) {
+                const data = await res.json();
+                return data.user || null;
+            }
+        } catch (e) {
+            // сервер недоступен, возвращаем null
         }
         return null;
     }
@@ -272,7 +276,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const votingBlock = document.querySelector('.voting-block');
         const votedMessage = document.getElementById('voted-message');
         const form = document.getElementById('voteForm');
-        
+
         if (!user || user.status !== 'approved') {
             window.location.href = 'elections.html';
             return;
