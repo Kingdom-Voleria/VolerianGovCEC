@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return data.user || null;
             }
         } catch (e) {
-            // сервер недоступен, возвращаем null
+            
         }
         return null;
     }
@@ -259,7 +259,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 textAlign: 'center',
             });
             registerForm.insertAdjacentElement('afterend', errorBox);
-            setTimeout(() => errorBox.remove(), 5000);
+            setTimeout(() => {
+                errorBox.classList.add('fade-out');
+                errorBox.addEventListener('animationend', () => errorBox.remove(), { once: true });
+            }, 5000);
         }
     }
 

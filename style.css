@@ -711,8 +711,23 @@ label.upload-label:hover {
         white-space: nowrap;
     }
 
+    .profile-card {
+        margin-top: 175px;
+    }
+
     .message .profile-card {
         margin-top: 150px;
+    }
+
+    .content-section#register {
+        flex-direction: column;
+    }
+    .content-section#register .section-image {
+        order: -1;
+        margin-bottom: 10px;
+    }
+    .message {
+        margin-top: 175px;
     }
 }
 
@@ -788,6 +803,67 @@ label.upload-label:hover {
         font-size: 12px;
         min-width: 80px;
         padding: 6px 8px;
+    }
+
+    body.index .main-content .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    body.index .main-content .action-button {
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        white-space: normal;
+    }
+
+    /* Кнопки внутри .message на всю ширину */
+    .message .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+        width: 100%;
+        padding: 0;
+    }
+    .message .action-button {
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        white-space: normal;
+    }
+    .message .action-buttons-wrapper {
+        justify-content: stretch !important;
+        width: 100%;
+        padding: 0;
+    }
+    /* Только для сообщения с отказом — кнопки под друг другом */
+    .message:has(#resubmit-button) .action-buttons-wrapper {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        margin-top: 12px;
+    }
+    .message:has(#resubmit-button) .action-buttons {
+        margin: 0 !important;
+    }
+    .message:has(#resubmit-button) .action-button {
+        margin: 0 !important;
+    }
+
+    .header-divider {
+        width: 90%;
+        height: 2px;
+        background: #888;
+        margin: 8px auto 0 auto;
+        border: none;
+        display: block;
+    }
+}
+
+@media (min-width: 601px) {
+    .header-divider {
+        display: none;
     }
 }
 
