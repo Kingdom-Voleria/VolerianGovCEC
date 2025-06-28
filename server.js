@@ -9,6 +9,7 @@ const { db, admin } = require('./firebase-config');
 const app = express();
 
 const port = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
 // Security headers
 app.use(helmet({ contentSecurityPolicy: false }));
@@ -76,8 +77,10 @@ app.use(session({
 app.use(cors({
     origin: [
         'http://localhost:3000',
-        'https://kingdom-voleria.github.io'
-    ],
+        'https://kingdom-voleria.github.io',
+        process.env.RENDER_EXTERNAL_URL,
+        process.env.RENDER_EXTERNAL_URL?.replace('https://', 'http://')
+    ].filter(Boolean),
     credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
