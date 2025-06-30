@@ -379,16 +379,17 @@ input[type="file"] {
 }
 
 .vote-option label {
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
     display: flex;
     font-size: 16px;
     line-height: 1.4;
     width: 100%;
+    gap: 10px;
 }
 
 .vote-option input[type="radio"] {
-    margin-right: 10px;
+    margin-top: 3px;
 }
 
 .voting-block button {
@@ -946,4 +947,12 @@ label.upload-label:hover {
 
 #voted-message {
     text-align: center;
+}
+
+.vote-label-text {
+    display: inline-block;
+    margin-left: 8px;
+    word-break: break-word;
+    white-space: normal;
+    flex: 1;
 }
